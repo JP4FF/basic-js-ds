@@ -19,7 +19,7 @@ class BinarySearchTree {
       return this.treeroot;
     }
   }
-
+  // =====================================================
   add(data) {
     // throw new NotImplementedError("Not implemented");
     let newNode = new Node(data);
@@ -46,7 +46,7 @@ class BinarySearchTree {
       }
     }
   }
-
+  // =====================================================
   has(data) {
     // throw new NotImplementedError("Not implemented");
     return this.searchExists(this.treeroot, data) ? true : false;
@@ -63,12 +63,25 @@ class BinarySearchTree {
       return true;
     }
   }
-
-  find(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  // =====================================================
+  find(data) {
+    // throw new NotImplementedError("Not implemented");
+    let findedNode = this.searchNode(this.treeroot, data);
+    return findedNode;
   }
 
+  searchNode(node, data) {
+    if (node === null) {
+      return null;
+    } else if (data < node.data) {
+      return this.searchNode(node.left, data);
+    } else if (data > node.data) {
+      return this.searchNode(node.right, data);
+    } else {
+      return node;
+    }
+  }
+  // =====================================================
   remove(/* data */) {
     throw new NotImplementedError("Not implemented");
     // remove line with error and write your code here
