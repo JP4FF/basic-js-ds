@@ -1,4 +1,4 @@
-const { CONSTANTS } = require('./constants.js');
+const { CONSTANTS } = require("./constants.js");
 
 const { SPECIAL_PROP_VALUE } = CONSTANTS;
 
@@ -31,5 +31,5 @@ function testOptional(title, fn, isAsyncTest) {
 }
 
 module.exports = {
-  testOptional
+  testOptional,
 };

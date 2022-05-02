@@ -49,7 +49,7 @@ class BinarySearchTree {
   // =====================================================
   has(data) {
     // throw new NotImplementedError("Not implemented");
-    return this.searchExists(this.treeroot, data) ? true : false;
+    return this.searchExists(this.treeroot, data);
   }
 
   searchExists(node, data) {
@@ -82,11 +82,41 @@ class BinarySearchTree {
     }
   }
   // =====================================================
-  remove(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  remove(data) {
+    // throw new NotImplementedError("Not implemented");
+    return !(this.removeNode(this.treeroot, data) === false);
   }
 
+  removeNode(node, data) {
+    if (node === null) {
+      return false;
+    }
+    if (data < node.data) {
+      node.left = this.removeNode(node.left, data);
+      return node;
+    } else if (data > node.data) {
+      node.right = this.removeNode(node.right, data);
+      return node;
+    } else {
+      if (node.left === null && node.right === null) {
+        node = null;
+        return node;
+      }
+
+      if (node.left === null) return node.right;
+      if (node.right === null) return node.left;
+
+      let currNode = node.right;
+      while (currNode.left !== null) {
+        currNode = currNode.left;
+      }
+      node.data = currNode.data;
+
+      node.right = this.removeNode(node.right, currNode.data);
+      return node;
+    }
+  }
+  // =====================================================
   min() {
     // throw new NotImplementedError("Not implemented");
     if (this.treeroot === null) {
